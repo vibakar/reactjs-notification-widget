@@ -11,3 +11,38 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.notification-count {
+  position: relative;
+  bottom: 10px;
+}
+
+.spacer {
+  height: 50px;
+  width: 100%;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+}
+
+.notification-list {
+  padding-top: 30px;
+  width: 80%;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+
+.disp-inline {
+  display: inline-block !important;
+}
+
+.light-grey {
+  background-color: #eeeeee !important;
+}
+
+.white {
+  background-color: #ffffff;
+}

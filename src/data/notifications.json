@@ -1,0 +1,41 @@
+[{
+    "id": 1,
+    "message": "Notification 1",
+    "time": "an hour ago",
+    "read": false
+},{
+    "id": 2,
+    "message": "Notification 2",
+    "time": "a day ago",
+    "read": true
+},{
+    "id": 3,
+    "message": "Notification 3",
+    "time": "2 days ago",
+    "read": false
+},{
+    "id": 4,
+    "message": "Notification 4",
+    "time": "2 days ago",
+    "read": true
+},{
+    "id": 5,
+    "message": "Notification 5",
+    "time": "a week ago",
+    "read": false
+},{
+    "id": 6,
+    "message": "Notification 6",
+    "time": "a week ago",
+    "read": false
+},{
+    "id": 7,
+    "message": "Notification 7",
+    "time": "a week ago",
+    "read": false
+},{
+    "id": 8,
+    "message": "Notification 8",
+    "time": "a week ago",
+    "read": false
+}]

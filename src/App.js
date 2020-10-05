@@ -1,25 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense, lazy }  from 'react';
+import Header from './components/Header';
+import { Route } from 'react-router-dom';
 
-function App() {
+const Home = lazy(() => import('./components/Home'));
+const NotificationList = lazy(() => import('./components/NotificationList'));
+const NotificationDetail = lazy(() => import('./components/NotificationDetail'));
+
+function App(props) {
+  console.log(props)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <div className="spacer"></div>
+      <Suspense fallback={<h3>Loading...</h3>}>
+          <Route path="/" exact component={Home} />
+          <Route path="/notifications" component={NotificationList} />
+          <Route path="/notification/:id" component={NotificationDetail} />
+      </Suspense>
+    </>
   );
 }
 
