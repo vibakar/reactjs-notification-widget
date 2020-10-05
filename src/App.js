@@ -7,7 +7,6 @@ const NotificationList = lazy(() => import('./components/NotificationList'));
 const NotificationDetail = lazy(() => import('./components/NotificationDetail'));
 
 function App(props) {
-  console.log(props)
   return (
     <>
       <Header />

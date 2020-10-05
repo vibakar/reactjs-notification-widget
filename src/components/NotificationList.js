@@ -2,18 +2,23 @@ import React from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { connect } from 'react-redux';
 
-import data from '../data/notifications.json';
 import Notification from './Notification';
+import * as actions from '../actions/notificationActions';
 
 class NotificationList extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            notifications: data.map(obj=> ({ ...obj, checked: false })),
+            notifications: this.props.notifications,
             disableBtns: true,
             checkRootCheckbox: false
         }
+    }
+
+    componentDidMount() {
+        this.props.getAllNotifications();
     }
 
     handleRootCheckbox = (event) => {
@@ -51,7 +56,8 @@ class NotificationList extends React.Component {
             notifications: modifyReadState,
             disableBtns: true,
             checkRootCheckbox: false
-        })
+        });
+        this.props.updateNotification(modifyReadState);
     }
 
     render() { 
@@ -67,7 +73,7 @@ class NotificationList extends React.Component {
                     </ListGroup.Item>
                         {
                             this.state.notifications.map((n, i) => {
-                                return (<Notification key={i} history={this.props.history} index={i} data={n} handleIndividualChange={this.handleIndividualChange} checked={this.state.selectAll}/>);
+                                return (<Notification key={i} index={i} data={n} handleIndividualChange={this.handleIndividualChange} checked={this.state.selectAll}/>);
                             })
                         }
                 </ListGroup>
@@ -76,4 +82,11 @@ class NotificationList extends React.Component {
     }
 }
 
-export default NotificationList;
+function mapStateToProps(state) {
+    let data = state.map(obj=> ({ ...obj, checked: false }));
+	return {
+		notifications: data
+	}
+}
+
+export default connect(mapStateToProps, actions)(NotificationList);

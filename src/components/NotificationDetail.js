@@ -1,20 +1,32 @@
 import React from 'react';
-import data from '../data/notifications.json';
+import { connect } from 'react-redux';
 
-function NotificationDetail(props) {
-    let getNotificationMsg = () => {
-        let notification = data.find(n => n.id === props.match.params.id);
-        if(notification) return notification.message;
-        return "Notification not availble for this ID";
+import * as actions from '../actions/notificationActions';
+
+class NotificationDetail extends React.Component {
+
+    componentDidMount() {
+        this.props.getAllNotifications();
     }
-    return (
-        <div className="mt-5 text-center">
-            <h3><u>Notification {props.match.params.id}</u></h3>
-            <div className="mt-5">
-                <p>{getNotificationMsg()}</p>
+
+    render() {
+        return (
+            <div className="mt-5 text-center">
+                <h3><u>Notification Detail</u></h3>
+                <div className="mt-5">
+                    <p>Message: {this.props.notification?.message}</p>
+                    <p>Time: {this.props.notification?.time}</p>
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
-export default NotificationDetail;
+function mapStateToProps(state, props) {
+    let data = state.find((n) => n.id === parseInt(props.match.params.id))
+	return {
+		notification: data
+	}
+}
+
+export default connect(mapStateToProps, actions)(NotificationDetail);
