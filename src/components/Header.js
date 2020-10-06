@@ -27,7 +27,7 @@ class Header extends React.Component {
         return (
             <>
                 <Navbar bg="dark" variant="dark" fixed="top">
-                    <Navbar.Brand>Navbar</Navbar.Brand>
+                    <Navbar.Brand>Mindteck</Navbar.Brand>
                     <Nav className="mr-auto">
                         <Nav.Link onClick={this.goToHome}>Home</Nav.Link>
                     </Nav>
